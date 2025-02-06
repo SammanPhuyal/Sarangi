@@ -1,0 +1,41 @@
+.sarangi-container {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  padding: 10px;
+  background: #222;
+  border-radius: 8px;
+}
+
+.white-key {
+  width: 50px;
+  height: 190px;
+  background: linear-gradient(white, #e0e0e0);
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.black-key {
+  width: 25px;
+  height: 110px;
+  background: linear-gradient(black, #333);
+  border: 1px solid #000;
+  color: white;
+  position: absolute;
+  top: 0;
+}
+
+/* Black key positioning */
+.black-key:nth-child(2) { left: 30px; }
+.black-key:nth-child(5) { left: 85px; }
+.black-key:nth-child(7) { left: 160px; }
+.black-key:nth-child(10) { left: 210px; }
+.black-key:nth-child(12) { left: 260px; }
+
+.active {
+  box-shadow: 0 0 10px rgba(16, 16, 11, 0.8);
+  transform: scale(1.05);
+}

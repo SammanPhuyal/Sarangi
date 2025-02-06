@@ -1,0 +1,22 @@
+// src/components/Logger/Logger.scss
+.logger {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  
+    .notes-log {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+  
+      span {
+        padding: 4px 8px;
+        background: #f0f0f0;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    }
+  }
