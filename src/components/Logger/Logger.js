@@ -1,4 +1,3 @@
-// src/components/Logger/Logger.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NotePropType } from '../../types/sarangi';
