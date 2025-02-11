@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 // Define Sarangi notes
-export const NOTE_VALUES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+export const NOTE_VALUES = ['A', 'As', 'B', 'C', 'Cs', 'D', 'Ds', 'E', 'F', 'Fs', 'G', 'Gs'];
 
 // PropTypes for a Sarangi note
 export const NotePropType = PropTypes.oneOf(NOTE_VALUES);
