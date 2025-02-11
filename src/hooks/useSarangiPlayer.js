@@ -49,7 +49,12 @@ const useSarangiPlayer = () => {
     setKeysLogged((prev) => [...prev, note]);
 
     // Add note to active state (for UI highlight)
-    setActiveNotes((prevNotes) => [...new Set([...prevNotes, note])]);
+    setActiveNotes((prevNotes) => {
+      if (!prevNotes.includes(note)) {
+        return [...prevNotes, note];
+      }
+      return prevNotes;
+    });
 
     playNote(note);
 
