@@ -1,4 +1,3 @@
-
 .logger {
     margin-top: 20px;
     padding: 20px;
@@ -7,16 +6,20 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   
     .notes-log {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-  
-      span {
-        padding: 4px 8px;
-        background: #f0f0f0;
-        border-radius: 4px;
-        font-family: monospace;
-      }
+        display: block;  /* Stack notes vertically */
+
+        span {
+            padding: 4px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-family: monospace;
+            display: inline-block;  /* Keeps span as inline-block for styling */
+            margin-bottom: 5px;  /* Adds space between notes */
+        }
+
+        br {
+            display: block;  /* Ensure line breaks are block-level */
+            margin-bottom: 10px;  /* Space after each line break */
+        }
     }
-  }
+}

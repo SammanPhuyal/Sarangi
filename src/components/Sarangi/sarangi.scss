@@ -9,52 +9,351 @@
   align-items: flex-end; /* Align items to the bottom of the row */
   gap: 20px;
 }
-
 .instructions {
-  width: 180px;
+  width: 480px;
   background: #f4f4f4;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  height: auto;
 }
 
-.instructions h3 {
-  margin-bottom: 10px;
+.note-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.left-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  gap: 5px;
+}
+
+.note {
+  display: inline-block;
+  width: 220px; /* Make the width a bit longer for better look */
+  height: 50px; /* A little taller to resemble key size */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px; /* Center the text vertically */
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+}
+
+.note-name {
   font-size: 16px;
+}
+
+.note.active {
+  background: #ffb84c;
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6); /* Glowing effect when active */
+}
+
+.note.spacebar {
+  width: 150px; /* Spacebar is wider */
+  border-radius: 5px;
+  background: #d4d4d4; /* Different background for spacebar */
   text-align: center;
 }
 
-.instructions ul {
-  list-style: none;
-  padding: 0;
+.note-spacebar.active {
+  background: #ffb84c;
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6);
 }
-
-.instructions li {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Glowing effect for active instruction */
-.instructions li.active {
-  background: rgba(255, 165, 0, 0.3); /* Light glow */
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+.key-like-text {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
   font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin: 0 5px;
+  box-sizing: border-box;
 }
 
+.key-like-text-press.active {
+  background: #357ab7;
+  color: #fff;
+}
+
+
+.key-like-text:hover {
+  background: #e6e6e6;
+}
+.key-like-text.active {
+  background: #ffb84c;
+  color: #fff;
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6);
+}
+
+/* Styling for 'Spacebar' */
+.key-like-text-spacebar {
+  background: #fffefb;
+  color: rgb(4, 3, 3);
+  box-shadow: 0px 0px 10px rgba(226, 173, 74, 0.6);
+}
+
+.key-like-text-spacebar.active {
+  background: #357ab7;
+  color: #2c2828;
+}
 .sarangi-container {
   position: relative;
   display: flex;
-  height: 200px;
+  height: 300px;
   margin: 50px auto;
   padding: 20px;
-  background: #f5f5f5;
+  background: var(--bg-color, #f5f5f5); /* Default background */
   border-radius: 18px;
   box-shadow: 0 10px 20px rgba(87, 65, 65, 0.2);
 }
+
+.color-scheme-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-options button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgb(88, 79, 79);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.color-options button:hover {
+  transform: scale(1.1); /* Slightly increase size when hovered */
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3); /* Blur and shadow effect */
+}
+/* Wooden Theme */
+.sarangi-container.wooden .key {
+  background-color: #d8c5a0; /* Beige for white keys */
+}
+
+.sarangi-container.wooden .key.black-key {
+  background-color: #5c4033; /* Deep brown for black keys */
+}
+
+.sarangi-container.wooden {
+  background-color: #8b6f47; /* Muted wood brown */
+}
+
+/* Earthy Theme */
+.sarangi-container.earthy .key {
+  background-color: #dad9d5; /* Mustard yellow for white keys */
+}
+
+.sarangi-container.earthy .key.black-key {
+  background-color: #a5a3a2; /* Rich terracotta for black keys */
+}
+
+.sarangi-container.earthy {
+  background-color: #d7cebe; /* Earthy beige */
+}
+
+/* Classic Theme */
+.sarangi-container.classic .key {
+  background-color: #f1e2d3; /* Ivory for white keys */
+  border: 1px solid black;
+}
+
+.sarangi-container.classic .key.black-key {
+  background-color: #b86a3f; /* Copper-like metallic for black keys */
+}
+
+.sarangi-container.classic {
+  background-color: #d8d0b0; /* Antique white */
+}
+
+/* Serene Theme */
+.sarangi-container.serene .key {
+  background-color: #8cb7db; /* Light blue for white keys */
+}
+
+.sarangi-container.serene .key.black-key {
+  background-color: #3b6991; /* Deep blue for black keys */
+}
+
+.sarangi-container.serene {
+  background-color: #d2e4f0; /* Soft pastel blue */
+}
+
+/* Vibrant Theme */
+.sarangi-container.vibrant .key {
+  background-color: #a59006; /* Bright yellow for white keys */
+}
+
+.sarangi-container.vibrant .key.black-key {
+  background-color: #d88500; /* Bold red for black keys */
+}
+
+.sarangi-container.vibrant {
+  background-color: #666808; /* Orange */
+}
+
+/* Mystic Theme */
+.sarangi-container.mystic .key {
+  background-color: #9b59b6; /* Lavender for white keys */
+}
+
+.sarangi-container.mystic .key.black-key {
+  background-color: #5c2e8c; /* Dark purple for black keys */
+}
+
+.sarangi-container.mystic {
+  background-color: #3c2a5b; /* Dark violet */
+}
+
+/* Sunset Theme */
+.sarangi-container.sunset .key {
+  background-color: #a3e080; /* Soft peach for white keys */
+}
+
+.sarangi-container.sunset .key.black-key {
+  background-color: #6cc06b; /* Warm gold for black keys */
+}
+
+.sarangi-container.sunset {
+  background-color: #1a6017; /* Deep orange */
+}
+
+/* Wooden Theme */
+.sarangi-wrapper.wooden .instructions {
+  color: #d0ab9a; /* Deep brown text color */
+  background-color: #251206; /* Dark walnut for note instructions */
+
+}
+
+.sarangi-wrapper.wooden .note {
+  color: #886855; /* Dark walnut for note instructions */
+}
+
+.sarangi-wrapper.wooden .key-like-text {
+  color: #332a19; /* Beige color for key instructions */
+}
+
+/* Earthy Theme */
+.sarangi-wrapper.earthy .instructions {
+  color: #0f140e; /* Olive green text color */
+  background-color: #ffff; /* Dark walnut for note instructions */
+
+}
+
+.sarangi-wrapper.earthy .note {
+  color: #18140e; /* Earthy brown for note instructions */
+}
+
+.sarangi-wrapper.earthy .key-like-text {
+  color: #37352f; /* Mustard yellow for key instructions */
+}
+
+/* Classic Theme */
+.sarangi-wrapper.classic .instructions {
+  color: #5d432f; /* Warm brown text color */
+}
+
+.sarangi-wrapper.classic .note {
+  color: #412b18; /* Copper-like brown for note instructions */
+}
+
+.sarangi-wrapper.classic .key-like-text {
+  color: #472614; /* Copper metallic for key instructions */
+}
+
+/* Serene Theme */
+.sarangi-wrapper.serene .instructions {
+  color: #2e4a7d; /* Calming blue for text color */
+  background-color: #b4cada; /* Soft pastel blue for key instructions */
+
+}
+
+.sarangi-wrapper.serene .note {
+  color: #1f3657; /* Deep blue for note instructions */
+}
+
+.sarangi-wrapper.serene .key-like-text {
+  color: #8ca5b7; /* Soft pastel blue for key instructions */
+
+}
+
+/* Vibrant Theme */
+.sarangi-wrapper.vibrant .instructions {
+  color: #4a5e16; /* Vibrant earthy green text color */
+}
+
+.sarangi-wrapper.vibrant .note {
+  color: #666808; /* Deep mustard green for note instructions */
+}
+
+.sarangi-wrapper.vibrant .key-like-text {
+  color: #9c9a1f; /* Lively yellow-green for key instructions */
+}
+
+/* Mystic Theme */
+.sarangi-wrapper.mystic .instructions {
+  color: #bfa0d4; /* Mystic lavender for text */
+  background-color: #27153a; /* Dark purple for black keys */
+
+}
+
+.sarangi-wrapper.mystic .note {
+  color: #7e5f9b; /* Deep violet for note instructions */
+}
+
+.sarangi-wrapper.mystic .key-like-text {
+  color: #21113c; /* Dark violet for key instructions */
+}
+
+/* Sunset Theme */
+.sarangi-wrapper.sunset .instructions {
+  background-color: #1b9a2e;
+  color: #2c3e2f; 
+}
+
+.sarangi-wrapper.sunset .note {
+  color: #1a6017; /* Lush green for note instructions */
+}
+
+.sarangi-wrapper.sunset .key-like-text {
+  color: #ed9f24; /* Golden yellow for key instructions */
+}
+
 
 .logger-container {
   width: 100%;

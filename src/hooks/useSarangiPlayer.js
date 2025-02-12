@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Custom hook for Sarangi player logic
 const useSarangiPlayer = () => {
   const [keysLogged, setKeysLogged] = useState([]); // Keeps track of notes pressed
   const [activeNotes, setActiveNotes] = useState([]); // Active notes for UI update
+  const playingNotes = useRef([]); // Track all currently playing audio notes
 
   // Keyboard mapping for Sarangi notes
   const keyMap = {
@@ -41,7 +42,8 @@ const useSarangiPlayer = () => {
   const playNote = (note) => {
     const soundFile = noteMap[note] || note;  // Get the correct sound file name
     const audio = new Audio(`/sounds/${soundFile}.wav`);
-    audio.play().catch(err => console.error('Audio error:', err));
+    playingNotes.current.push(audio); // Track the new note playing
+    audio.play().catch(err => console.error('Audio error:', err)); // Play the new note
   };
 
   // Handle note click (either by mouse or keyboard)
@@ -64,6 +66,15 @@ const useSarangiPlayer = () => {
     }, 500);
   };
 
+  // Function to stop all playing sounds
+  const stopAllSounds = () => {
+    playingNotes.current.forEach((audio) => {
+      audio.pause();
+      audio.currentTime = 0; // Reset to the start
+    });
+    playingNotes.current = []; // Clear the list of playing sounds
+  };
+
   // Keyboard event listener
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -71,6 +82,11 @@ const useSarangiPlayer = () => {
       if (note) {
         handleClick(note);
         e.preventDefault(); // Prevent default browser behavior (e.g., page scroll)
+      }
+
+      // Handle spacebar to stop all sounds
+      if (e.key === " ") {
+        stopAllSounds();
       }
     };
 
