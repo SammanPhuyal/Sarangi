@@ -14,7 +14,9 @@ const keyMapInstructions = {
   'D#': 't', 'E': 'g',
   'F': 'h', 'F#': 'u',
   'G': 'j', 'G#': 'i',
-  'Stop sound': 'Space'
+  'Stop Sound': 'Space',
+  'Line Break`': 'Enter',
+
 };
 
 const Sarangi = () => {
